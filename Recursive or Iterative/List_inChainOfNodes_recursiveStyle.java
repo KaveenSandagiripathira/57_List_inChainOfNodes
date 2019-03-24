@@ -2,7 +2,7 @@
   Represent a list, implemented in a chain of nodes
  */
 
-public class List_inChainOfNodes{
+public class List_inChainOfNodes_recursiveStyle{
     private Node headReference;
 
     /**
@@ -15,13 +15,13 @@ public class List_inChainOfNodes{
       @return the number of elements in this list
      */
     public int size() {
-		int size = 0;
 		Node currentNode = headReference;
-		while (currentNode != null){ 
-			size++;
-			currentNode = currentNode.getReferenceToNextNode();
+		if (currentNode == null){
+			return 0;
 		}
-		return size;
+		else {
+			return 1 + currentNode.getReferenceToNextNode().size();
+		}
     }
 
     
@@ -33,11 +33,17 @@ public class List_inChainOfNodes{
     public String toString() {
 		String result = "[";
 		Node currentNode = headReference;
-		while (currentNode != null){
-			result += currentNode.getCargoReference() + ",";
-			currentNode = currentNode.getReferenceToNextNode();
+		if (currentNode == null){
+			return "]";
 		}
-		return result + "]";
+		else{
+			
+		}
+		// while (currentNode != null){
+			// result += currentNode.getCargoReference() + ",";
+			// currentNode = currentNode.getReferenceToNextNode();
+		// }
+		// return result + "]";
     }
     
     

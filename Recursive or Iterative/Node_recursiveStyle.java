@@ -4,7 +4,7 @@
   o  reference to the next node in the list
  */
 
-public class Node {
+public class Node_recursiveStyle {
     private Object cargoReference;
     private Node   referenceToNextNode;
 

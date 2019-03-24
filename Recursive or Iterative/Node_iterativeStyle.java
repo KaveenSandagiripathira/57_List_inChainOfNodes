@@ -4,7 +4,7 @@
   o  reference to the next node in the list
  */
 
-public class Node {
+public class Node_iterativeStyle {
     private Object cargoReference;
     private Node   referenceToNextNode;
 
@@ -24,12 +24,11 @@ public class Node {
       @return a string representation of this instance
      */
     public String toString() {
-        String result = cargoReference.toString() + " id " + super.toString();
-        // Show rest of chain of nodes
-        if( referenceToNextNode == null)
-             result += " [no next]";
-        else 
-			result += " --> " + referenceToNextNode;
+		String result = cargoReference + " id " + super.toString();
+		for (Node nextNode = referenceToNextNode ; nextNode != null ; nextNode = nextNode.getReferenceToNextNode()){
+				 result += " --> " + nextNode.cargoReference + " id " + super.toString();
+			 }
+		result += " [no next]";
         return result;
     }
 
