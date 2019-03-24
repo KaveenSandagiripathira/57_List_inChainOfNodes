@@ -2,7 +2,7 @@
   Represent a list, implemented in a chain of nodes
  */
 
-public class List_inChainOfNodes_iterativeStyle{
+public class List_inChainOfNodes{
     private Node headReference;
 
     /**

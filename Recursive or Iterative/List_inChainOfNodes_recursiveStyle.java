@@ -2,7 +2,7 @@
   Represent a list, implemented in a chain of nodes
  */
 
-public class List_inChainOfNodes_recursiveStyle{
+public class List_inChainOfNodes{
     private Node headReference;
 
     /**
@@ -15,12 +15,13 @@ public class List_inChainOfNodes_recursiveStyle{
       @return the number of elements in this list
      */
     public int size() {
-		Node currentNode = headReference;
-		if (currentNode == null){
+		if (headReference == null){
 			return 0;
 		}
 		else {
-			return 1 + currentNode.getReferenceToNextNode().size();
+			List_inChainOfNodes smallerList = new List_inChainOfNodes();
+			smallerList.headReference = headReference.getReferenceToNextNode();
+			return 1 + smallerList.size();
 		}
     }
 
@@ -31,21 +32,21 @@ public class List_inChainOfNodes_recursiveStyle{
            # elements [element0,element1,element2,] 
       */
     public String toString() {
-		String result = "[";
-		Node currentNode = headReference;
-		if (currentNode == null){
-			return "]";
-		}
-		else{
-			
-		}
-		// while (currentNode != null){
-			// result += currentNode.getCargoReference() + ",";
-			// currentNode = currentNode.getReferenceToNextNode();
-		// }
-		// return result + "]";
+
+		return "[" + toString_recur();
     }
     
+	public String toString_recur(){
+		String output = "";
+		if (headReference == null){
+			return output += "]";
+		}
+		else{
+			List_inChainOfNodes smallerList = new List_inChainOfNodes();
+			smallerList.headReference = headReference.getReferenceToNextNode();
+			return output += headReference.getCargoReference() + "," + smallerList.toString_recur(); 
+		}
+	}
     
     /**
       Append @value to the head of this list.

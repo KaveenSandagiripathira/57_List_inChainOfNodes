@@ -4,7 +4,7 @@
   o  reference to the next node in the list
  */
 
-public class Node_iterativeStyle {
+public class Node {
     private Object cargoReference;
     private Node   referenceToNextNode;
 
