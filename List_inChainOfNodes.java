@@ -51,4 +51,58 @@ public class List_inChainOfNodes{
 		headReference = new Node(val, temp);
         return true;
      }
+	 
+	 public void set(int index, Object value){
+		 int counter = 0;
+		 Node currentNode = headReference;
+		 while (counter != index){
+			 currentNode = currentNode.getReferenceToNextNode();
+			 counter++;
+		 }
+		 currentNode.setCargoReference(value);
+	 }
+	 
+	 
+	 public Object get(int index){
+		Node currentNode = headReference;
+		for (int counter = 0; counter != index; counter++){
+			currentNode = currentNode.getReferenceToNextNode();
+		}		
+		 return currentNode.getCargoReference();
+		 
+	 }
+	 
+	 
+	 public boolean add(int index, Object value){
+		 if (index == 0){
+			 addAsHead(value);
+		 }
+		 else{
+			 Node currentNode = headReference;
+			 Node newNode = new Node(value);
+			 for (int counter = 0; counter != index - 1 ; counter ++){
+				 currentNode = currentNode.getReferenceToNextNode();
+			 }
+			 Node tempNextNode = currentNode.getReferenceToNextNode();
+			 currentNode.setReferenceToNextNode(newNode);					 
+			 newNode.setReferenceToNextNode(tempNextNode);
+		 }
+		 return true;
+		 
+	 }
+	 
+	 public boolean remove(int index){
+		 if (index == 0){
+			 headReference = headReference.getReferenceToNextNode();
+		 }
+		 else{
+			Node currentNode = headReference;
+			for (int counter = 0; counter != index - 1; counter ++){
+				currentNode = currentNode.getReferenceToNextNode();
+			}
+			Node nextNode = currentNode.getReferenceToNextNode();
+			currentNode.setReferenceToNextNode(nextNode.getReferenceToNextNode());
+		 }
+		 return true;
+	 }
 }
